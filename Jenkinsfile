@@ -1,10 +1,10 @@
 /*
     Note:
 
-    Windows users use "bat" instead of "sh"
-    For ex: bat 'docker build -t=vinsdocker/selenium .'
+    Linux users use "sh" instead of "bat"
+    For ex: sh 'docker build -t=topdandy/selenium-docker-test-v1 .'
 
-    Do not use "vinsdocker" to push. Use your dockerhub account
+    Do not use "topdandy" to push. Use your dockerhub account
 */
 pipeline{
 
