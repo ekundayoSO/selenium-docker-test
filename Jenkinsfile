@@ -30,7 +30,7 @@ pipeline{
                 DOCKER_HUB = credentials('dockerhub-credentials')
             }
             steps{
-                bat 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
+                bat 'docker login -u ${DOCKER_HUB_USR} -password-stdin'
                 bat 'docker push topdandy/selenium-docker-test-v1'
             }
         }
