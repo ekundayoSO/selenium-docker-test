@@ -1,39 +1,45 @@
+/*
+    Note:
+
+    Windows users use "bat" instead of "sh"
+    For ex: bat 'docker build -t=vinsdocker/selenium .'
+
+    Do not use "vinsdocker" to push. Use your dockerhub account
+*/
 pipeline{
 
     agent any
 
-    environment {
-        NUMBER = 3
-    }
-
     stages{
 
-        stage('stage-1'){
+        stage('Build Jar'){
             steps{
-                echo "doing mvn clean"
-                echo "NUMBER = ${NUMBER}"
+                bat 'mvn clean package -DskipTests'
             }
         }
 
-        stage('stage-2'){
-            environment {
-                NUMBER = 6
-            }
+        stage('Build Image'){
             steps{
-               echo "NUMBER = ${NUMBER}"
+                bat 'docker build -t=topdandy/selenium-docker-test-v1 .'
             }
         }
 
-         stage('stage-3'){
+        stage('Push Image'){
+            environment{
+                // assuming you have stored the credentials with this name
+                DOCKER_HUB = credentials('dockerhub-credentials')
+            }
             steps{
-               echo "NUMBER = ${NUMBER}"
+                bat 'docker login -u ${DOCKER_HUB_USR} -p ${DOCKER_HUB_PSW}'
+                bat 'docker push topdandy/selenium-docker-test-v1'
             }
         }
+
     }
 
     post {
         always {
-            echo "doing clean up"
+            bat 'docker logout'
         }
     }
 
