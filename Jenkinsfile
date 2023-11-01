@@ -6,14 +6,6 @@
 
     Do not use "topdandy" to push. Use your dockerhub account
 */
-/*
-    Note:
-
-    Linux users use "sh" instead of "bat"
-    For ex: sh 'docker build -t=topdandy/selenium-docker-test-v1 .'
-
-    Do not use "topdandy" to push. Use your dockerhub account
-*/
 pipeline{
 
     agent any
