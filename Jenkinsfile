@@ -28,8 +28,8 @@ pipeline{
                 bat 'docker push topdandy/selenium-docker-test-v1'
 
                 bat 'docker push topdandy/selenium-docker-test-v1:latest'
-                bat "docker tag topdandy/selenium-docker-test-v1:latest topdandy/selenium-docker-test-v1:{env.BUILD_NUMBER}"
-                bat "docker push topdandy/selenium-docker-test-v1:{env.BUILD_NUMBER}"
+                bat "docker tag topdandy/selenium-docker-test-v1:latest topdandy/selenium-docker-test-v1:${env.BUILD_NUMBER}"
+                bat "docker push topdandy/selenium-docker-test-v1:${env.BUILD_NUMBER}"
             }
         }
 
