@@ -33,25 +33,21 @@ public class BaseTest {
 
     }
     public void initializeRemoteDriver(String browserName) throws MalformedURLException {
-        DesiredCapabilities dc = new DesiredCapabilities();
         switch (browserName) {
             case "chrome" -> {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.merge(dc);
-                driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/wd/hub"), chromeOptions);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions);
             }
             case "firefox" -> {
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.merge(dc);
-                driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/wd/hub"), firefoxOptions);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), firefoxOptions);
             }
             case "edge" -> {
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.merge(dc);
-                driver = new RemoteWebDriver(new URL("http://192.168.56.1:4444/wd/hub"), edgeOptions);
+                driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), edgeOptions);
             }
             default -> throw new IllegalArgumentException("Invalid browser name: " + browserName);
         }

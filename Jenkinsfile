@@ -26,11 +26,11 @@ pipeline{
 
         stage('Push Image'){
             environment{
-                // assuming you have stored the credentials with this name
-                DOCKER_HUB = credentials('dockerhub-credentials')
+                SERVICE_CREDS = credentials('dockerhub-creds')
             }
             steps{
-                bat 'docker login -u ${DOCKER_HUB_USR} -password-stdin'
+                bat 'echo "Service user is ${SERVICE_CREDS_USR}"'
+                bat 'echo "Service password is ${SERVICE_CREDS_PSW}"'
                 bat 'docker push topdandy/selenium-docker-test-v1'
             }
         }

@@ -43,4 +43,4 @@ services:
     entrypoint:
       java -cp "libs/*"  org.testng.TestNG  test-suites/testng.xml
     volumes:
-      - ./output/Result:/home/selenium-docker/test-output
+      - ./output/result:/home/selenium-docker/test-output
