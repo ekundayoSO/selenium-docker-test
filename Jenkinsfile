@@ -18,12 +18,6 @@ pipeline{
             }
         }
 
-        stage('Build Image'){
-            steps{
-                bat 'docker build -t=topdandy/selenium-docker-test-v1:latest .'
-            }
-        }
-
         stage('Push Image'){
             environment{
                 SERVICE_CREDS = credentials('dockerhub-creds')
