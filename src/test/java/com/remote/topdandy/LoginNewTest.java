@@ -1,25 +1,21 @@
 package com.remote.topdandy;
 
-import base.BaseTest;
+import base.TestBase;
 import com.remote.topdandy.pages.LoginNewTestPage;
 import org.testng.annotations.Test;
-import utilities.ConfigurationReader;
 
-import java.io.IOException;
-
-public class LoginNewTest extends BaseTest {
+public class LoginNewTest extends TestBase {
 
     @Test
-    public void loginNewTest() throws IOException {
+    public void loginNewTest() {
 
-        ConfigurationReader data = new ConfigurationReader();
         LoginNewTestPage login2 = new LoginNewTestPage(driver);
 
-        driver.get(data.geURL());
+        driver.get(CONFIG.getProperty("url"));
         driver.manage().window().maximize();
 
-        login2.enterUserEmail(data.getLoginEmail());
-        login2.enterUserPassword(data.getPassword());
+        login2.enterUserEmail(CONFIG.getProperty("username"));
+        login2.enterUserPassword(CONFIG.getProperty("password"));
         login2.clickOnLoginButton();
 
 

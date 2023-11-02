@@ -25,13 +25,11 @@ pipeline{
             steps{
                 bat 'echo "Service user is ${SERVICE_CREDS_USR}"'
                 bat 'echo "Service password is ${SERVICE_CREDS_PSW}"'
-<<<<<<< HEAD
                 bat 'docker push topdandy/selenium-docker-test-v1'
-=======
+
                 bat 'docker push topdandy/selenium-docker-test-v1:latest'
                 bat "docker tag topdandy/selenium-docker-test-v1:latest topdandy/selenium-docker-test-v1:{env.BUILD_NUMBER}"
                 bat "docker push topdandy/selenium-docker-test-v1:{env.BUILD_NUMBER}"
->>>>>>> 4033171f436ca3d5bd5f7ff90f730b506b957ae6
             }
         }
 
