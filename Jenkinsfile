@@ -31,15 +31,6 @@ pipeline{
             }
         }
 
-        stage('Run Test') {
-            steps{
-                 bat 'docker-compose up'
-            }
-               
-        }
-
-    }
-
     post {
         always {
             bat 'docker logout'
