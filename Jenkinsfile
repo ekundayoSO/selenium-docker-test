@@ -42,7 +42,6 @@ pipeline{
 
     post {
         always {
-            bat 'docker-compose down'
             bat 'docker logout'
         }
     }
